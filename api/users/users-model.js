@@ -18,14 +18,14 @@ const update = (user_id, user) => {
   return db('users')
     .update(user)
     .where({ user_id })
-    .then(() => getBy({ user_id }))
+    .then(() => getBy({ user_id }).first())
 }
 
 const remove = (user_id) => {
   return db('users')
     .delete()
     .where({ user_id })
-    .then(() => user_id)
+    .then(() => parseInt(user_id))
 }
 
 module.exports = {
