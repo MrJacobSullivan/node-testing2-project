@@ -5,7 +5,7 @@ const get = () => {
 }
 
 const getBy = (filter) => {
-  return db('users').where(filter)
+  return db('users').where(filter).first()
 }
 
 const insert = (user) => {
@@ -18,7 +18,7 @@ const update = (user_id, user) => {
   return db('users')
     .update(user)
     .where({ user_id })
-    .then(() => getBy({ user_id }).first())
+    .then(() => getBy({ user_id }))
 }
 
 const remove = (user_id) => {
